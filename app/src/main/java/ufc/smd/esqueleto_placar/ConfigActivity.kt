@@ -5,19 +5,40 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Switch
 import data.Placar
 
 class ConfigActivity : AppCompatActivity() {
-    lateinit var placar: Placar
+    var placar: Placar= Placar("Jogo sem Config","0x0", false)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_config)
-        placar= getIntent().getExtras()?.getSerializable("placar") as Placar
-     //   openConfig()
+       // placar= getIntent().getExtras()?.getSerializable("placar") as Placar
+        //Log.v("PDM22",placar.nome_partida)
+        //Log.v("PDM22",placar.has_timer.toString())
+
+
+        openConfig()
         initInterface()
+
+    }
+    fun saveConfig(){
+        val sharedFilename = "configPlacar"
+        val sp:SharedPreferences = getSharedPreferences(sharedFilename,Context.MODE_PRIVATE)
+        var edShared = sp.edit()
+        edShared.putString("matchname",placar.nome_partida)
+        edShared.putBoolean("has_timer",placar.has_timer)
+        edShared.commit()
+    }
+    fun openConfig()
+    {
+        val sharedFilename = "configPlacar"
+        val sp:SharedPreferences = getSharedPreferences(sharedFilename,Context.MODE_PRIVATE)
+        placar.nome_partida=sp.getString("matchname","Jogo Padrão").toString()
+        placar.has_timer=sp.getBoolean("has_timer",false)
 
     }
     fun initInterface(){
@@ -34,9 +55,12 @@ class ConfigActivity : AppCompatActivity() {
         placar.has_timer=sw.isChecked
     }
 
-    fun openPlacar(v: View){
-        updatePlacarConfig()
-   //     saveConfig()
-
+    fun openPlacar(v: View){ //Executa ao click do Iniciar Jogo
+        updatePlacarConfig() //Pega da Interface e joga no placar
+        saveConfig() //Salva no Shared preferences
+        val intent = Intent(this, PlacarActivity::class.java).apply{
+            putExtra("placar", placar)
+        }
+        startActivity(intent)
     }
 }

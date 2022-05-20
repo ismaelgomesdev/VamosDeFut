@@ -29,7 +29,8 @@ class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<Cust
         //holder.imageView.setImageResource(ItemsViewModel.image)
 
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = placarAnterior.resultado
+        holder.textView.text = placarAnterior.nome_partida
+        holder.textView3.text = placarAnterior.resultado
 
     }
 
@@ -42,5 +43,6 @@ class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<Cust
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val textView: TextView = itemView.findViewById(R.id.textView)
+        val textView3: TextView = itemView.findViewById(R.id.textView3)
     }
 }

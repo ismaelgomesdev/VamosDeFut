@@ -32,7 +32,7 @@ class PreviousGamesActivity : AppCompatActivity() {
         // ArrayList enviado ao Adapter
         val adapter = CustomAdapter(data)
 
-        // Setenado o Adapter no Recyclerview
+        // Setando o Adapter no Recyclerview
         recyclerview.adapter = adapter
 
     }

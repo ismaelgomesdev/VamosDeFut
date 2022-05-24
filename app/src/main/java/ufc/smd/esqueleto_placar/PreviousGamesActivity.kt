@@ -6,31 +6,33 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import data.Placar
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PreviousGamesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_previous_games)
 
-        // getting the recyclerview by its id
+        // Trazendo o Recycler View
         val recyclerview = findViewById<RecyclerView>(R.id.rcPreviousGames)
 
-        // this creates a vertical layout Manager
+        // Tipo de Layout Manager será Linear
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-        // ArrayList of class ItemsViewModel
+        // O ArrayList de Placares
         val data = ArrayList<Placar>()
 
-        // This loop will create 20 Views containing
-        // the image with the count of view
+        //Criando 7 Placares
         for (i in 1..7) {
-            data.add(Placar("Jogo "+i,""+i+"x"+i,true))
+            data.add(Placar("Jogo "+i,""+i+"x"+i," ",true))
         }
 
-        // This will pass the ArrayList to our Adapter
+        // ArrayList enviado ao Adapter
         val adapter = CustomAdapter(data)
 
-        // Setting the Adapter with the recyclerview
+        // Setenado o Adapter no Recyclerview
         recyclerview.adapter = adapter
 
     }

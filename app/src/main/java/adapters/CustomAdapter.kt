@@ -1,36 +1,46 @@
 package adapters
 
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import data.Placar
 import ufc.smd.esqueleto_placar.R
 
 class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-    // create new views
+
+    // Criação de Novos ViewHolders
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // inflates the card_view_design view
-        // that is used to hold list item
+        // infla o card_previous_games
         val view = LayoutInflater.from(parent.context).inflate(R.layout.card_previous_game, parent, false)
 
         return ViewHolder(view)
     }
 
-    // binds the list items to a view
+    // Ligando o Recycler view a um View Holder
+    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+        val imageView: ImageView = ItemView.findViewById(R.id.imageview)
+        val tvNomePartida: TextView = ItemView.findViewById(R.id.tvNomePartida)
+        val tvResultadoJogo: TextView = ItemView.findViewById(R.id.tvResultadoJogo)
+        val lnCell: LinearLayout = ItemView.findViewById(R.id.lnCell)
+    }
+
+    // faz o bind de uma ViewHolder a um Objeto da Lista
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val placarAnterior = mList[position]
 
-        // sets the image to the imageview from our itemHolder class
-        //holder.imageView.setImageResource(ItemsViewModel.image)
+        //alimentando os elementos a partir do objeto placar
+        holder.tvNomePartida.text = placarAnterior.nome_partida
+        holder.tvResultadoJogo.text = placarAnterior.resultado
 
-        // sets the text to the textview from our itemHolder class
-        holder.textView.text = placarAnterior.nome_partida
-        holder.textView3.text = placarAnterior.resultado
 
     }
 
@@ -39,10 +49,5 @@ class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<Cust
         return mList.size
     }
 
-    // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.imageview)
-        val textView: TextView = itemView.findViewById(R.id.textView)
-        val textView3: TextView = itemView.findViewById(R.id.textView3)
-    }
+
 }

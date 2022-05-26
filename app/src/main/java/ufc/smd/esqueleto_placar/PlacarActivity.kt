@@ -68,14 +68,35 @@ class PlacarActivity : AppCompatActivity() {
         val sharedFilename = "PreviousGames"
         val sp: SharedPreferences = getSharedPreferences(sharedFilename, Context.MODE_PRIVATE)
         var edShared = sp.edit()
-        edShared.putInt("numberMatch", 5)
+        //Salvar o número de jogos já armazenados
+        edShared.putInt("numberMatch", 1)
+
+        //Escrita em Bytes de Um objeto Serializável
         var dt= ByteArrayOutputStream()
         var oos = ObjectOutputStream(dt);
         oos.writeObject(placar);
+
+        //Salvar como "match1"
         edShared.putString("match1", dt.toString(StandardCharsets.ISO_8859_1.name()))
-        edShared.commit()
+        edShared.commit() //Não esqueçam de comitar!!!
 
     }
+
+    fun lerUltimosJogos(v: View){
+        val sharedFilename = "PreviousGames"
+        val sp: SharedPreferences = getSharedPreferences(sharedFilename, Context.MODE_PRIVATE)
+
+        var meuObjString:String= sp.getString("match1","").toString()
+        if (meuObjString.length >=1) {
+            var dis = ByteArrayInputStream(meuObjString.toByteArray(Charsets.ISO_8859_1))
+            var oos = ObjectInputStream(dis)
+            var placarAntigo:Placar=oos.readObject() as Placar
+            Log.v("SMD26",placar.resultado)
+        }
+    }
+
+
+
 
     fun ultimoJogos () {
         val sharedFilename = "PreviousGames"

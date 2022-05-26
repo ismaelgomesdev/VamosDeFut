@@ -24,9 +24,18 @@ class PreviousGamesActivity : AppCompatActivity() {
         // O ArrayList de Placares
         val data = ArrayList<Placar>()
 
-        //Criando 7 Placares
-        for (i in 1..7) {
-            data.add(Placar("Jogo "+i,""+i+"x"+i," ",true))
+       // val date = Calendar.getInstance().time
+       // var dateTimeFormat = SimpleDateFormat("dd/MM/yy HH:mm:ss", Locale.getDefault())
+       // val data_hora = dateTimeFormat.format(date)
+
+
+
+        //Criando 10 Placares
+        for (i in 1..10) {
+            val date = Calendar.getInstance().time
+            var dateTimeFormat = SimpleDateFormat("dd/MM/yy HH:mm:ss", Locale.getDefault())
+            val data_hora = dateTimeFormat.format(date)
+            data.add(Placar("Jogo "+i,""+i+"x"+i," O jogo foi 4x4 em "+data_hora+"h",true))
         }
 
         // ArrayList enviado ao Adapter

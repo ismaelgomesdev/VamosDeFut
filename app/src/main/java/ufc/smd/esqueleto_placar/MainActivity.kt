@@ -17,8 +17,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
 
     }
-    fun openPreviusGames(v: View){
-        val intent = Intent(this, PreviousGamesActivity::class.java).apply{
+
+    fun openPermission(v: View){
+        val intent = Intent(this, PermissionActivity::class.java).apply{}
+        startActivity(intent)
+    }
+    fun openPreviusGames(v: View) {
+        val intent = Intent(this, PreviousGamesActivity::class.java).apply {
 
         }
         startActivity(intent)

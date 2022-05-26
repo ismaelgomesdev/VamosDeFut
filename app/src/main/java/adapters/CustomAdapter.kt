@@ -1,6 +1,7 @@
 package adapters
 
 import android.text.Layout
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +42,14 @@ class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<Cust
         holder.tvNomePartida.text = placarAnterior.nome_partida
         holder.tvResultadoJogo.text = placarAnterior.resultado
 
+        holder.lnCell.setOnClickListener{
+            val duration= Snackbar.LENGTH_LONG
+            val text= placarAnterior.resultadoLongo
 
+            val snack= Snackbar.make(holder.lnCell,text,duration)
+            snack.show()
+
+        }
     }
 
     // return the number of the items in the list

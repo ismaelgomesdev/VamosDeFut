@@ -9,19 +9,58 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import data.UIEducacionalPermissao
+import androidx.activity.result.ActivityResultLauncher as ActivityResultLauncher1
+
 class PermissionActivity : AppCompatActivity() {
 
+    lateinit var requestPermissionLauncher:androidx.activity.result.ActivityResultLauncher<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_permission)
+
+        requestPermissionLauncher= registerForActivityResult(
+                ActivityResultContracts.RequestPermission()
+            ) { isGranted: Boolean ->
+                if (isGranted) {
+                    ligarFunc("tel:+5588999999999")
+                } else {
+                    Log.v("PDM", " Seu maldito, preciso dessa permissão")
+                }
+            }
     }
-    fun ligar(v: View){
-        ligarFunc("tel:85999999999")
-       /*
+    fun ligar(v: View) {
+
+
+        if(ContextCompat.checkSelfPermission(
+                this.applicationContext,
+                Manifest.permission.CALL_PHONE
+            ) == PackageManager.PERMISSION_GRANTED) {
+                //Tenho a permissão
+
+                ligarFunc("tel:+5585999999999")
+            }else{
+                //Não tenho a permissão
+                Log.v("PDM", "Não tem permissão")
+            requestPermissionLauncher.launch(Manifest.permission.CALL_PHONE)
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+    /*
 
         if ((ContextCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE)
                     == PackageManager.PERMISSION_GRANTED)
@@ -48,11 +87,10 @@ class PermissionActivity : AppCompatActivity() {
                 Log.v("SMD", "Outra Vez")
             }
         }*/
-    }
+    //}
 
     fun ligarFunc (numeroCall:String){
         val uri = Uri.parse(numeroCall)
-        //   Intent itLigar = new Intent(Intent.ACTION_DIAL, uri);
         val itLigar = Intent(Intent.ACTION_CALL, uri)
         startActivity(itLigar)
     }

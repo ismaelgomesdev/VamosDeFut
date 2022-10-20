@@ -69,15 +69,16 @@ class PlacarActivity : AppCompatActivity() {
         val sp: SharedPreferences = getSharedPreferences(sharedFilename, Context.MODE_PRIVATE)
         var edShared = sp.edit()
         //Salvar o número de jogos já armazenados
-        edShared.putInt("numberMatch", 1)
+        var numMatches= sp.getInt("numberMatch",0) + 1
+        edShared.putInt("numberMatch", numMatches)
 
         //Escrita em Bytes de Um objeto Serializável
         var dt= ByteArrayOutputStream()
         var oos = ObjectOutputStream(dt);
         oos.writeObject(placar);
 
-        //Salvar como "match1"
-        edShared.putString("match1", dt.toString(StandardCharsets.ISO_8859_1.name()))
+        //Salvar como "match"
+        edShared.putString("match"+numMatches, dt.toString(StandardCharsets.ISO_8859_1.name()))
         edShared.commit() //Não esqueçam de comitar!!!
 
     }

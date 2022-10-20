@@ -96,7 +96,7 @@ class PreviousGamesActivity : AppCompatActivity() {
                     var placar: Placar = obi.readObject() as Placar
 
                         //Log.v("PDM", "match"+i+" :"+aux)
-                        Log.v("PDM", "Placar: "+placar.nome_partida +" Res:"+placar.resultadoLongo)
+                        Log.v("PDM", "Placar: "+placar.nome_partida +"Res 2: "+placar.resultado)
                     }
                 }
             }

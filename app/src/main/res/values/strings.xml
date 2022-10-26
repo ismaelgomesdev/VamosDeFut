@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Esqueleto_Placar</string>
+    <string name="nome_partida">Nome da Partida</string>
+    <string name="text_time1">Time 1</string>
+    <string name="text_time2">Time 2</string>
+    <string name="txt_00">00</string>
+    <string name="txt_1_tempo">1° tempo</string>
+    <string name="txt_2_tempo">2° tempo</string>
+    <string name="txt_bandeira_1_time">Bandeira do 1° time</string>
+    <string name="txt_bandeira_2_time">Bandeira do 2° time</string>
+    <string name="txt_fab_Voltar">Voltar</string>
+    <string name="txt_fab_Salvar">Salvar</string>
+    <string name="txt_fab_Ctrlz">Desfazer última ação</string>
 </resources>

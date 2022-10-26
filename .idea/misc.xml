@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dkunc/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout-land/activity_placar.xml" value="0.33" />
+        <entry key="..\:/Users/Dkunc/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout/activity_placar.xml" value="0.1503623188405797" />
+        <entry key="..\:/Users/Dkunc/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout/activity_previous_games.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/winds/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout/activity_config.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/winds/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/winds/AndroidStudioProjects/Esqueleto_Placar/app/src/main/res/layout/activity_permission.xml" value="0.14666666666666667" />

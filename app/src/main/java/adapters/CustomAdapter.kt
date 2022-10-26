@@ -1,14 +1,11 @@
 package adapters
 
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import data.Placar
@@ -28,7 +25,7 @@ class CustomAdapter(private val mList: List<Placar>) : RecyclerView.Adapter<Cust
     // Ligando o Recycler view a um View Holder
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = ItemView.findViewById(R.id.imageview)
-        val tvNomePartida: TextView = ItemView.findViewById(R.id.tvNomePartida)
+        val tvNomePartida: TextView = ItemView.findViewById(R.id.tvNomeTimeUm)
         val tvResultadoJogo: TextView = ItemView.findViewById(R.id.tvResultadoJogo)
         val lnCell: LinearLayout = ItemView.findViewById(R.id.lnCell)
     }
